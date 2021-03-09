@@ -16,8 +16,8 @@ biasValues = [1e-5, 1e-4, 1e-3]
 activityValues = [1e-5, 1e-4, 1e-3]
 l1_l2_Values_l1 = [1e-5, 1e-4, 1e-3]
 l1_l2_Values_l2 = [1e-5, 1e-4, 1e-3]
-optChoices = ['sgd','RMSprop','Adam']
-dropoutValues = np.linspace(0,0.75,10)
+optChoices = ['sgd','Adam'] #removed RMSprop
+dropoutValues = np.linspace(0,1,5) #changed from 1,0.75,10
 
 #Progress Bar ezpz code
 #364500 max iterations
@@ -77,7 +77,7 @@ def main():
     for job in jobs: 
         job.get()
         modelCounter = modelCounter + 1
-        progressPercent = (modelCounter / 364000) * 100
+        progressPercent = (modelCounter / 121500) * 100 #changed from 364000
         print("Models complete: " + str(modelCounter) + ", Percent Complete: " + str(progressPercent) + "%")
         #print(job.get())
     

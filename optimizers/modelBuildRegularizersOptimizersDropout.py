@@ -49,8 +49,6 @@ def modelBuild(data, q):
             model.add(Dense(10, activation='softmax'))
             if optSelect=='sgd':
                 opt = optimizers.SGD(learning_rate=learningRateValue, decay=0, momentum=momentumValue)
-            elif optSelect=='RMSprop':
-                opt = optimizers.RMSprop(learning_rate=learningRateValue, momentum=momentumValue)
             elif optSelect=='Adam':
                 opt = optimizers.Adam(learning_rate=learningRateValue) #no momentum option for Adam
             model.compile(loss=lossMeasure, optimizer=opt, metrics=['accuracy'])
@@ -63,8 +61,6 @@ def modelBuild(data, q):
             model.add(Dense(10, activation='softmax'))
             if optSelect=='sgd':
                 opt = optimizers.SGD(learning_rate=learningRateValue, decay=0, momentum=momentumValue)
-            elif optSelect=='RMSprop':
-                opt = optimizers.RMSprop(learning_rate=learningRateValue, momentum=momentumValue)
             elif optSelect=='Adam':
                 opt = optimizers.Adam(learning_rate=learningRateValue) #no momentum option for Adam
             model.compile(loss=lossMeasure, optimizer=opt, metrics=['accuracy'])
@@ -78,8 +74,6 @@ def modelBuild(data, q):
             model.add(Dense(10, activation='softmax'))
             if optSelect=='sgd':
                 opt = optimizers.SGD(learning_rate=learningRateValue, decay=0, momentum=momentumValue)
-            elif optSelect=='RMSprop':
-                opt = optimizers.RMSprop(learning_rate=learningRateValue, momentum=momentumValue)
             elif optSelect=='Adam':
                 opt = optimizers.Adam(learning_rate=learningRateValue) #no momentum option for Adam
             model.compile(loss=lossMeasure, optimizer=opt, metrics=['accuracy'])
