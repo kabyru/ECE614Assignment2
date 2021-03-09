@@ -10,6 +10,7 @@ def modelBuild(data):
     from keras.utils import to_categorical
     from keras import optimizers
     from keras import regularizers
+    from keras import Dropout
 
     import csv
     (x_train, y_train), (x_test, y_test) = fashion_mnist.load_data()
@@ -32,12 +33,14 @@ def modelBuild(data):
     architecture = data[2]
     numLayers = data[3]
     optSelect = data[4]
+    dropoutValue = data[5]
     lossMeasure = 'categorical_crossentropy'
 
     try:
         if (numLayers == 1):
             model = Sequential()
             model.add(Dense(64, activation=architecture, input_shape=(784,)))
+            model.add(Dropout(dropoutValue))
             model.add(Dense(10, activation='softmax'))
             if optSelect=='sgd':
                 opt = optimizers.SGD(learning_rate=learningRateValue, decay=0, momentum=momentumValue)
@@ -50,6 +53,7 @@ def modelBuild(data):
         elif (numLayers == 2):
             model = Sequential()
             model.add(Dense(64, activation=architecture, input_shape=(784,)))
+            model.add(Dropout(dropoutValue))
             model.add(Dense(64, activation=architecture))
             model.add(Dense(10, activation='softmax'))
             if optSelect=='sgd':
@@ -63,6 +67,7 @@ def modelBuild(data):
         elif (numLayers == 3):
             model = Sequential()
             model.add(Dense(64, activation=architecture, input_shape=(784,)))
+            model.add(Dropout(dropoutValue))
             model.add(Dense(64, activation=architecture))
             model.add(Dense(64, activation=architecture))
             model.add(Dense(10, activation='softmax'))
