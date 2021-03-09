@@ -1,0 +1,1 @@
+python ./fineTuningAssignment2.py | Out-File ./fineTuningAssignment2Results.txt
