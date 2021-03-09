@@ -7,6 +7,7 @@ import os
 
 momentumValues = np.linspace(0,1,10)
 learningRateValues = np.linspace(0,1,10)
+dropoutValues = np.linspace(0,0.75,10)
 architectureChoices = ['sigmoid','tanh','relu']
 numLayersChoices = [1, 2, 3]
 optimizerChoices = ['sgd','RMSprop','Adam']
@@ -29,7 +30,8 @@ if __name__ == '__main__':
             for architecture in architectureChoices:
                 for numLayers in numLayersChoices:
                     for optSelect in optimizerChoices:
-                        data.append([momentumValue, learningRateValue, architecture, numLayers, optSelect])
+                        for dropoutSelect in dropoutValues:
+                            data.append([momentumValue, learningRateValue, architecture, numLayers, optSelect, dropoutSelect])
     
     mp_handler(data)
 
