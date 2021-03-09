@@ -1,4 +1,4 @@
-from modelBuildRegularizers import modelBuild
+from modelBuildRegularizersOptimizersDropout import modelBuild
 import multiprocessing as mp
 import time
 import numpy as np
@@ -18,6 +18,10 @@ l1_l2_Values_l1 = [1e-5, 1e-4, 1e-3]
 l1_l2_Values_l2 = [1e-5, 1e-4, 1e-3]
 optChoices = ['sgd','RMSprop','Adam']
 dropoutValues = np.linspace(0,0.75,10)
+
+#Progress Bar ezpz code
+#364500 max iterations
+#Let's count how many iterations have ran and act accordingly
  
 
 fn = './resultsOptimizers.txt'
@@ -33,7 +37,6 @@ fn = './resultsOptimizers.txt'
 
 def listener(q):
     '''listens for messages on the q, writes to file. '''
-
     with open(fn, 'w') as f:
         while 1:
             m = q.get()
@@ -44,6 +47,7 @@ def listener(q):
             f.flush()
 
 def main():
+    modelCounter = 0
     manager = mp.Manager()
     q = manager.Queue()
     pool = mp.Pool(10)
@@ -72,7 +76,10 @@ def main():
     # collect results from the workers through the pool result queue
     for job in jobs: 
         job.get()
-        print(job.get())
+        modelCounter = modelCounter + 1
+        progressPercent = (modelCounter / 364000) * 100
+        print("Models complete: " + str(modelCounter) + ", Percent Complete: " + str(progressPercent) + "%")
+        #print(job.get())
     
     #now we are done, kill the listener
     q.put('kill')

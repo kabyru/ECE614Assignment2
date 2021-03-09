@@ -10,7 +10,7 @@ def modelBuild(data, q):
     from keras.utils import to_categorical
     from keras import optimizers
     from keras import regularizers
-    from keras import Dropout
+    from keras.layers import Dropout
 
     import csv
     (x_train, y_train), (x_test, y_test) = fashion_mnist.load_data()
@@ -98,7 +98,7 @@ def modelBuild(data, q):
                     verbose=0,
                     validation_data=(x_test[:testing_samples],y_test[:testing_samples]))
                                     
-        print(str(momentumValue) + " " + str(learningRateValue) + " " + architecture + " " + str(numLayers) + " " + str(biasValue) + " " + str(activityValue) + " " + str(l1_l2_Value_l1) + " " + str(l1_l2_Value_l2) + " " + str(optSelect) + " " + str(dropoutValue) + " " + str(history.history['val_accuracy'][9]))
+        #print(str(momentumValue) + " " + str(learningRateValue) + " " + architecture + " " + str(numLayers) + " " + str(biasValue) + " " + str(activityValue) + " " + str(l1_l2_Value_l1) + " " + str(l1_l2_Value_l2) + " " + str(optSelect) + " " + str(dropoutValue) + " " + str(history.history['val_accuracy'][9]))
         res = str(momentumValue) + " " + str(learningRateValue) + " " + architecture + " " + str(numLayers) + " " + str(biasValue) + " " + str(activityValue) + " " + str(l1_l2_Value_l1) + " " + str(l1_l2_Value_l2) + " " + str(optSelect) + " " + str(dropoutValue) + " " + str(history.history['val_accuracy'][9])
         q.put(res)
         return res
