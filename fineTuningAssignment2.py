@@ -9,7 +9,9 @@ momentumValues = np.linspace(0,1,10)
 learningRateValues = np.linspace(0,1,10)
 architectureChoices = ['sigmoid','tanh','relu']
 numLayersChoices = [1, 2, 3]
+optimizerChoices = ['sgd','RMSprop','Adam']
 lossMeasure = 'categorical_crossentropy'
+
 modelCounter = 0        
 
 #print("MomentumRate " + "LearningRate " + "Architecture " + "NumberofLayers " + "ValidationAccuracy")
@@ -26,7 +28,8 @@ if __name__ == '__main__':
         for learningRateValue in learningRateValues:
             for architecture in architectureChoices:
                 for numLayers in numLayersChoices:
-                    data.append([momentumValue, learningRateValue, architecture, numLayers])
+                    for optSelect in optimizerChoices:
+                        data.append([momentumValue, learningRateValue, architecture, numLayers, optSelect])
     
     mp_handler(data)
 
