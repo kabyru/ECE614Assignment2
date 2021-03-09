@@ -31,6 +31,7 @@ def modelBuild(data):
     learningRateValue = data[1]
     architecture = data[2]
     numLayers = data[3]
+    optSelect = data[4]
     lossMeasure = 'categorical_crossentropy'
 
     try:
@@ -38,16 +39,26 @@ def modelBuild(data):
             model = Sequential()
             model.add(Dense(64, activation=architecture, input_shape=(784,)))
             model.add(Dense(10, activation='softmax'))
-            sgd = optimizers.SGD(lr=learningRateValue, decay=0, momentum=momentumValue)
-            model.compile(loss=lossMeasure, optimizer=sgd, metrics=['accuracy'])
+            if optSelect=='sgd':
+                opt = optimizers.SGD(learning_rate=learningRateValue, decay=0, momentum=momentumValue)
+            elif optSelect=='RMSprop':
+                opt = optimizers.RMSprop(learning_rate=learningRateValue, momentum=momentumValue)
+            elif optSelect=='Adam':
+                opt = optimizers.Adam(learning_rate=learningRateValue) #no momentum option for Adam
+            model.compile(loss=lossMeasure, optimizer=opt, metrics=['accuracy'])
             #model.summary()
         elif (numLayers == 2):
             model = Sequential()
             model.add(Dense(64, activation=architecture, input_shape=(784,)))
             model.add(Dense(64, activation=architecture))
             model.add(Dense(10, activation='softmax'))
-            sgd = optimizers.SGD(lr=learningRateValue, decay=0, momentum=momentumValue)
-            model.compile(loss=lossMeasure, optimizer=sgd, metrics=['accuracy'])
+            if optSelect=='sgd':
+                opt = optimizers.SGD(learning_rate=learningRateValue, decay=0, momentum=momentumValue)
+            elif optSelect=='RMSprop':
+                opt = optimizers.RMSprop(learning_rate=learningRateValue, momentum=momentumValue)
+            elif optSelect=='Adam':
+                opt = optimizers.Adam(learning_rate=learningRateValue) #no momentum option for Adam
+            model.compile(loss=lossMeasure, optimizer=opt, metrics=['accuracy'])
             #model.summary()
         elif (numLayers == 3):
             model = Sequential()
@@ -55,8 +66,13 @@ def modelBuild(data):
             model.add(Dense(64, activation=architecture))
             model.add(Dense(64, activation=architecture))
             model.add(Dense(10, activation='softmax'))
-            sgd = optimizers.SGD(lr=learningRateValue, decay=0, momentum=momentumValue)
-            model.compile(loss=lossMeasure, optimizer=sgd, metrics=['accuracy'])
+            if optSelect=='sgd':
+                opt = optimizers.SGD(learning_rate=learningRateValue, decay=0, momentum=momentumValue)
+            elif optSelect=='RMSprop':
+                opt = optimizers.RMSprop(learning_rate=learningRateValue, momentum=momentumValue)
+            elif optSelect=='Adam':
+                opt = optimizers.Adam(learning_rate=learningRateValue) #no momentum option for Adam
+            model.compile(loss=lossMeasure, optimizer=opt, metrics=['accuracy'])
             #model.summary()
 
         training_samples = 60000
