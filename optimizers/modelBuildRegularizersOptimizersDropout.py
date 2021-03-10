@@ -51,6 +51,18 @@ def modelBuild(data, q):
                 opt = optimizers.SGD(learning_rate=learningRateValue, decay=0, momentum=momentumValue)
             elif optSelect=='Adam':
                 opt = optimizers.Adam(learning_rate=learningRateValue) #no momentum option for Adam
+            elif optSelect=='RMSprop':
+                opt = optimizers.RMSprop(learning_rate=learningRateValue, momentum=momentumValue)
+            elif optSelect=='Adadelta':
+                opt = optimizers.Adadelta(learning_rate=learningRateValue)
+            elif optSelect=='Adagrad':
+                opt = optimizers.Adagrad(learning_rate=learningRateValue)
+            elif optSelect=='Adamax':
+                opt = optimizers.Adamax(learning_rate=learningRateValue)
+            elif optSelect=='Nadam':
+                opt = optimizers.Nadam(learning_rate=learningRateValue)
+            elif optSelect=='Ftrl':
+                opt = optimizers.Ftrl(learning_rate=learningRateValue)
             model.compile(loss=lossMeasure, optimizer=opt, metrics=['accuracy'])
             #model.summary()
         elif (numLayers == 2):
@@ -63,6 +75,18 @@ def modelBuild(data, q):
                 opt = optimizers.SGD(learning_rate=learningRateValue, decay=0, momentum=momentumValue)
             elif optSelect=='Adam':
                 opt = optimizers.Adam(learning_rate=learningRateValue) #no momentum option for Adam
+            elif optSelect=='RMSprop':
+                opt = optimizers.RMSprop(learning_rate=learningRateValue, momentum=momentumValue)
+            elif optSelect=='Adadelta':
+                opt = optimizers.Adadelta(learning_rate=learningRateValue)
+            elif optSelect=='Adagrad':
+                opt = optimizers.Adagrad(learning_rate=learningRateValue)
+            elif optSelect=='Adamax':
+                opt = optimizers.Adamax(learning_rate=learningRateValue)
+            elif optSelect=='Nadam':
+                opt = optimizers.Nadam(learning_rate=learningRateValue)
+            elif optSelect=='Ftrl':
+                opt = optimizers.Ftrl(learning_rate=learningRateValue)
             model.compile(loss=lossMeasure, optimizer=opt, metrics=['accuracy'])
             #model.summary()
         elif (numLayers == 3):
@@ -76,6 +100,18 @@ def modelBuild(data, q):
                 opt = optimizers.SGD(learning_rate=learningRateValue, decay=0, momentum=momentumValue)
             elif optSelect=='Adam':
                 opt = optimizers.Adam(learning_rate=learningRateValue) #no momentum option for Adam
+            elif optSelect=='RMSprop':
+                opt = optimizers.RMSprop(learning_rate=learningRateValue, momentum=momentumValue)
+            elif optSelect=='Adadelta':
+                opt = optimizers.Adadelta(learning_rate=learningRateValue)
+            elif optSelect=='Adagrad':
+                opt = optimizers.Adagrad(learning_rate=learningRateValue)
+            elif optSelect=='Adamax':
+                opt = optimizers.Adamax(learning_rate=learningRateValue)
+            elif optSelect=='Nadam':
+                opt = optimizers.Nadam(learning_rate=learningRateValue)
+            elif optSelect=='Ftrl':
+                opt = optimizers.Ftrl(learning_rate=learningRateValue)
             model.compile(loss=lossMeasure, optimizer=opt, metrics=['accuracy'])
             #model.summary()
                                     
