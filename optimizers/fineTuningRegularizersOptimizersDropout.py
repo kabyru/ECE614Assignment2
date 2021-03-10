@@ -6,7 +6,7 @@ import os
 
 #data = {"momentumValue":momentumValue, "learningRateValue":learningRateValue, "architecture":architecture, "numLayers":numLayers}
 
-momentumValues = np.linspace(0,1,5)
+momentumValues = np.linspace(0,0.8,5)
 learningRateValues = np.linspace(0,1,5)
 architectureChoices = ['tanh','relu']
 numLayersChoices = [1, 2, 3]
@@ -59,6 +59,8 @@ def main():
     jobs = []
     data = []
     
+    startTime = time.time()
+
     for momentumValue in momentumValues:
         for learningRateValue in learningRateValues:
             for architecture in architectureChoices:
@@ -76,6 +78,9 @@ def main():
     # collect results from the workers through the pool result queue
     for job in jobs: 
         job.get()
+
+        #DISPLAY COMPLETION PERCENTAGE
+
         modelCounter = modelCounter + 1
         progressPercent = (modelCounter / 121500) * 100 #changed from 364000
         print("Models complete: " + str(modelCounter) + ", Percent Complete: " + str(progressPercent) + "%")
